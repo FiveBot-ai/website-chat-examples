@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chat after cookie consent</title>
+  </head>
+  <body>
+    <div id="consent" role="dialog" aria-label="Cookies">
+      <p>We use a chat to answer your questions.</p>
+      <button type="button" id="accept">Accept</button>
+    </div>
+
+    <script src="https://fivebot.ai/widget.js" data-key="pk_your_site_key" data-autoload="false"></script>
+    <script>
+      document.getElementById('accept').addEventListener('click', function () {
+        document.getElementById('consent').remove();
+        window.FiveBot.load();
+      });
+    </script>
+  </body>
+</html>

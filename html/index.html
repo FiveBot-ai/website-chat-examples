@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Need help?</title>
+  </head>
+  <body>
+    <main>
+      <h1>Need help?</h1>
+      <button type="button" id="chat">Chat with us</button>
+      <button type="button" id="refund">Ask about a refund</button>
+    </main>
+
+    <script
+      src="https://fivebot.ai/widget.js"
+      data-key="pk_your_site_key"
+      data-position="right"
+      data-color-mode="auto"
+      async
+    ></script>
+    <script>
+      window.addEventListener('load', function () {
+        var chat = window.FiveBot;
+        if (!chat) return;
+
+        document.getElementById('chat').addEventListener('click', function () {
+          chat.open();
+        });
+        document.getElementById('refund').addEventListener('click', function () {
+          chat.open({ topic: 'refunds' });
+        });
+
+        chat.on('unread:changed', function (event) {
+          document.title = event.count > 0 ? '(' + event.count + ') Need help?' : 'Need help?';
+        });
+      });
+    </script>
+  </body>
+</html>
